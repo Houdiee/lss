@@ -12,7 +12,7 @@ Personal project to test out nim and improved file sorting to the original ls co
 This project is by no means the most polished or feature-complete, but it gets the job done. The regular ls command lists *everything* alphabetically, which can often seem messy or clustered. This rewrite will alphabetically sort first the directories, then the executables and finally the rest of the files in alphabetical order to give an overall more 'clean' output. (the icons look pretty too)
 
 ## Prerequisites
-A ![nerd font](nerdfonts.com) must be installed and set as the defeault terminal font.
+A ![nerd font](nerdfonts.com) must be installed and set as the default terminal font.
 
 # Installation
 1. Clone the repo
