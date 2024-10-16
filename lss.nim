@@ -64,10 +64,10 @@ proc iterate_files(hidden: bool) =
       # Documents
       ".pdf": red(" "),
       ".epub": yellow(" "),
+      ".md": yellow(" "),
       ".mobi": magenta(" "),
       ".djvu": green("󱗖 "),
       ".log": white("󰯃 "),
-      ".md": yellow("󰸕 "),
       ".txt": white(" "),
 
       # Image format
