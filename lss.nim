@@ -111,7 +111,7 @@ proc iterate_files(hidden: bool) =
       ".nimble": yellow(" "),
       ".config": blue(" "),
       ".git-credentials": red("󰊢 "),
-      ".git-config": red("󰊢 "),
+      ".gitconfig": red("󰊢 "),
       ".gitignore": red("󰊢 "),
       ".vimrc": white(" "),
       "viminfo": white(" "),
