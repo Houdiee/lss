@@ -107,7 +107,7 @@ proc iterate_files(hidden: bool) =
       # Developer / Programming Language
       "Makefile": white(" "),
       "rustup": red("󱘗 "),
-      ".cargo": red(" "),
+      ".cargo": blue(" "),
       ".nimble": yellow(" "),
       ".config": blue(" "),
       "git-credentials": red("󰊢 "),
