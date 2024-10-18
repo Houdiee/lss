@@ -2,10 +2,10 @@
 
 Personal project to test out nim and improved file sorting to the original ls command + pretty icons.
 
-## Original LS command
+## Original LS command 🥱
 ![](./assets/ls.png)
 
-## vs on Steroids
+## vs on Steroids 💉
 ![](./assets/lss.png)
 
 ## Why another ls rewrite?

@@ -121,6 +121,8 @@ proc iterate_files(hidden: bool) =
       # Unix
       "fonts": blue(" "),
       ".cache": blue("󰆼 "),
+      ".log": blue("󰯃 "),
+      ".profile": white(" "),
 
       # Programs
       ".mozilla": blue(" "),
