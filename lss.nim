@@ -11,8 +11,8 @@ var table: TerminalTable
 var directories = newSeq[(string, string)]()
 var files = newSeq[(string, string)]()
 
-proc iterate_files(hidden: bool) =
-  for kind, path in walkDir(current_path):
+proc iterate_files(hidden: bool, input_path: string) =
+  for kind, path in walkDir(input_path):
     let (_, register_name, extension) = splitFile(path)
     let file_format = register_name & extension
     let directory_format = file_format & "/"
@@ -83,8 +83,8 @@ proc iterate_files(hidden: bool) =
       ".7z": red(" "),
 
       # Fonts
-      ".ttf": white("󰊄 "),
-      ".otf": white("󰊄 "),
+      ".ttf": yellow("󰊄 "),
+      ".otf": green("󰊄 "),
 
       # Distro
       ".deb": red(" "),
@@ -96,6 +96,7 @@ proc iterate_files(hidden: bool) =
       ".ini": white(" "),
       ".cache": white("󰆼 "),
       ".core": white(" "),
+      ".dat": white(" "),
     }.toTable()
 
     let special_names = {
@@ -107,8 +108,11 @@ proc iterate_files(hidden: bool) =
       # Developer / Programming Language
       "Makefile": white(" "),
       "rustup": red("󱘗 "),
+      ".wine": blue(" "),
+      ".i386-wine-pkg": blue(" "),
       ".cargo": blue(" "),
-      ".nimble": yellow(" "),
+      ".npm": blue(" "),
+      ".nimble": blue(" "),
       ".config": blue(" "),
       ".git-credentials": red("󰊢 "),
       ".gitconfig": red("󰊢 "),
@@ -133,7 +137,6 @@ proc iterate_files(hidden: bool) =
 
     let dir_ext = {
       # Developer / Programming Languages
-      ".npm": red(" "),
       ".conf": blue(" "),
     }.toTable()
 
@@ -197,9 +200,8 @@ proc iterate_files(hidden: bool) =
   for fi in files:
     all_values.add(fi[0] & fi[1])
 
-
-proc print_default() =
-  iterate_files(hidden = true)
+proc print_default(hidden: bool, input_path: string) =
+  iterate_files(hidden, input_path)
   let cellsPerRow = int(toFloat(terminal_width) * 0.04)
   var count = 0
   var row = newSeq[string]()
@@ -226,8 +228,8 @@ proc print_default() =
     discard
 
 
-proc print_all() =
-  iterate_files(hidden = false)
+proc print_all(hidden: bool, input_path: string) =
+  iterate_files(hidden, input_path)
   let cellsPerRow = int(toFloat(terminal_width) * 0.04)
   var count = 0
   var row = newSeq[string]()
@@ -256,9 +258,18 @@ proc print_all() =
 
   table.echoTable(terminal_width, padding=4)
 
+proc print_directory(path: string) =
+  print_default(false, path)
+
 if paramCount() == 0:
-  print_default()
+  print_default(false, current_path)
 else:
   case paramStr(1):
     of "-a":
-      print_all()
+      if paramCount() == 1:
+        print_all(true, current_path)
+      else:
+        if paramCount() == 2:
+          print_all(true, paramStr(2))
+    else:
+      print_directory(paramStr(1))
