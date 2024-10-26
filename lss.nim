@@ -39,6 +39,7 @@ proc iterate_files(hidden: bool, input_path: string) =
       ".erb": red("󰴭 "),
       ".scala": red(" "),
       ".jsx": blue("󰜈 "),
+      ".zig": yellow(" "),
       ".lua": blue("󰢱 "),
       ".ts": blue("󰛦 "),
       ".py": yellow("󰌠 "),
@@ -130,9 +131,12 @@ proc iterate_files(hidden: bool, input_path: string) =
 
       # Programs
       ".mozilla": blue(" "),
+      ".tor": blue(" "),
 
       # Other
       "home": blue(" "),
+      "TODO": green(" "),
+      "ebooks": blue("󱚜 "),
     }.toTable()
 
     let dir_ext = {
