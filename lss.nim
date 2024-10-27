@@ -266,12 +266,12 @@ proc print_directory(path: string) =
   print_default(false, path)
 
 if paramCount() == 0:
-  print_default(false, current_path)
+  print_default(true, current_path)
 else:
   case paramStr(1):
     of "-a":
       if paramCount() == 1:
-        print_all(true, current_path)
+        print_all(false, current_path)
       else:
         if paramCount() == 2:
           print_all(true, paramStr(2))
