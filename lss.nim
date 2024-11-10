@@ -58,6 +58,7 @@ proc iterate_files(hidden: bool, input_path: string) =
       ".exs": magenta(" "),
       ".json": yellow(" "),
       ".xml": blue("󰗀 "),
+      ".nix": blue(" "),
 
       ".fish": green(" "),
       ".zsh": blue(" "),
@@ -122,6 +123,7 @@ proc iterate_files(hidden: bool, input_path: string) =
       "viminfo": white(" "),
       ".git": blue(" "),
       ".vim": blue(" "),
+      "config": white(" "),
 
       # Unix
       "fonts": blue(" "),
